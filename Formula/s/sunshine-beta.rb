@@ -288,6 +288,8 @@ class SunshineBeta < Formula
   end
 
   if OS.linux?
+    service_file_source = buildpath/"dist/linux/app-dev.lizardbyte.app.Sunshine.service"
+    prefix.install service_file_source => "#{service_name}.service"
     service do
       name "app-dev.lizardbyte.app.Sunshine"
     end
