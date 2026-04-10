@@ -295,7 +295,7 @@ class SunshineBeta < Formula
     end
   elsif OS.mac?
     service do
-      name run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
+      run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
     end
   end
 
