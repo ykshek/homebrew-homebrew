@@ -295,7 +295,7 @@ class SunshineBeta < Formula
     if OS.linux?
       opoo <<~EOS
         ATTENTION: To complete installation, you must run the following command:
-        `sudo /home/linuxbrew/.linuxbrew/bin/postinst/postinst`
+        `sudo #{bin}/postinst`
       EOS
     end
 
