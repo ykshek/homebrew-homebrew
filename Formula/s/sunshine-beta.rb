@@ -296,7 +296,7 @@ class SunshineBeta < Formula
 
   if OS.linux?
     service do
-      name "app-dev.lizardbyte.app.Sunshine"
+      name linux: "app-dev.lizardbyte.app.Sunshine"
     end
   elsif OS.mac?
     service do
