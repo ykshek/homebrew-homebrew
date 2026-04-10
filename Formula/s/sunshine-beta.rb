@@ -287,9 +287,14 @@ class SunshineBeta < Formula
     install_platform_specific_files
   end
 
-  service do
-    name linux: "app-dev.lizardbyte.app.Sunshine",
-    name macos: run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
+  if OS.linux?
+    service do
+      name "app-dev.lizardbyte.app.Sunshine"
+    end
+  elsif OS.mac?
+    service do
+      name run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
+    end
   end
 
   def post_install
