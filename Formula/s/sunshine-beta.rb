@@ -288,7 +288,8 @@ class SunshineBeta < Formula
   end
 
   service do
-    run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
+    name linux: "app-dev.lizardbyte.app.Sunshine",
+    name macos: run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
   end
 
   def post_install
