@@ -279,6 +279,7 @@ class SunshineBeta < Formula
     system "codesign", "-s", "-", "--force", "--deep", bin/"sunshine" if OS.mac? && Hardware::CPU.intel?
 
     bin.install "src_assets/linux/misc/postinst" if OS.linux?
+    bin.install "packaging/linux/app-dev.lizardbyte.app.Sunshine.service" if OS.linux?
   end
 
   def install
