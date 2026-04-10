@@ -12,7 +12,7 @@ class SunshineBeta < Formula
   desc "Self-hosted game stream host for Moonlight"
   homepage "https://app.lizardbyte.dev/Sunshine"
   url "https://github.com/LizardByte/Sunshine.git",
-    tag: "v2026.407.170539"
+    tag: "v2026.409.171120"
   license all_of: ["GPL-3.0-only"]
   head "https://github.com/LizardByte/Sunshine.git", branch: "master"
 
@@ -34,11 +34,11 @@ class SunshineBeta < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/lizardbyte/homebrew"
-    sha256 arm64_tahoe:   "282fcaec50796b7dbc7b14f482630ec5fd9b8b855b0e8d838724a8b2625910ff"
-    sha256 arm64_sequoia: "faab5f5edcda5678021f70b7e0b0c9defe02c4fd16b3e82d7821e5a4d3d14c66"
-    sha256 arm64_sonoma:  "ac162891ddbcfdce655ec8a2ee76e55cf903a288d9f99808ff872370bf2b8089"
-    sha256 arm64_linux:   "7309a4c662f47bfe6d9afb016e231ae48ec3edf21ac0c979a8afd22f02886b37"
-    sha256 x86_64_linux:  "3087f25a931f88c8c20a34a279001fbb715e8fe7f9ba1be6b55d2c35d36aec14"
+    sha256 arm64_tahoe:   "be4dc68c920e796983ba3aeda989e5d4012e7d4f9ef28fdb98c65b4b2fec9acf"
+    sha256 arm64_sequoia: "04dc3d35da87d6ad01b6aa7a46ef9401c8c8ef700748ce759e96346ae01d1363"
+    sha256 arm64_sonoma:  "bfde5ac379f92541778ee21fd14c436dfdc9f2bf831b8fc36dd1d055e3675273"
+    sha256 arm64_linux:   "bf144c86112c18ffd647823e0b0e178873ecaf913239acad016b1c617816d241"
+    sha256 x86_64_linux:  "2fa5e976aa0a9b6e46ba81746a0c65c05877bccc7beea2fb444d98e2b54570cc"
   end
 
   option "with-cuda", "Enable CUDA support (Linux only)"
@@ -143,8 +143,8 @@ class SunshineBeta < Formula
 
   def setup_build_environment
     ENV["BRANCH"] = ""
-    ENV["BUILD_VERSION"] = "2026.407.170539"
-    ENV["COMMIT"] = "e61d9ba4380c407dcbc4646c1decb021416ea022"
+    ENV["BUILD_VERSION"] = "2026.409.171120"
+    ENV["COMMIT"] = "d3330d1c8d5f9d3ab41fccee7aa6b3fd5a5ee35f"
 
     setup_linux_gcc_environment if OS.linux?
 
@@ -288,7 +288,8 @@ class SunshineBeta < Formula
   end
 
   service do
-    run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
+    name linux: "app-dev.lizardbyte.app.Sunshine",
+    name macos: run [opt_bin/"sunshine", "~/.config/sunshine/sunshine.conf"]
   end
 
   def post_install
