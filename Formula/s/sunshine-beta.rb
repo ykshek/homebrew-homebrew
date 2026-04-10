@@ -277,10 +277,15 @@ class SunshineBeta < Formula
 
     # codesign the binary on intel macs
     system "codesign", "-s", "-", "--force", "--deep", bin/"sunshine" if OS.mac? && Hardware::CPU.intel?
-
-    bin.install "src_assets/linux/misc/postinst" if OS.linux?
-    bin.install "packaging/linux/app-dev.lizardbyte.app.Sunshine.service" if OS.linux?
-    prefix.install service_file_source => "#{service_name}.service" if OS.linux?
+    if OS.linux?
+      bin.install "src_assets/linux/misc/postinst"
+      service_source = "packaging/linux/app-dev.lizardbyte.app.Sunshine.service"
+      if File.exist?(service_source)
+        prefix.install service_source => "#{service_name}.service"
+      else
+        opoo "Service file not found at #{service_source}"
+      end
+    end
   end
 
   def install
